@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+}
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: #333;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu-icon {
+    cursor: pointer;
+    z-index: 20;
+}
+
+.menu-hamburger {
+    width: 25px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+.slide-menu {
+    position: absolute;
+    top: 60px;
+    left: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 200px;
+    display: none;
+    z-index: 15;
+}
+
+.slide-menu ul {
+    list-style: none;
+}
+
+.slide-menu ul li {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slide-menu ul li:last-child {
+    border-bottom: none;
+}
+
+.slide-menu ul li:hover {
+    background-color: #f9f9f9;
+}
+
+.tasks-container {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.task-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+    position: relative;
+    border-left: 6px solid transparent;
+}
+
+/* Estado de tareas */
+.task-card.active {
+    border-left-color: #3498db; /* Azul para tareas activas */
+}
+
+.task-card.completed {
+    border-left-color: #2ecc71; /* Verde para tareas completadas */
+    opacity: 0.7;
+}
+
+.task-card.completed .task-info h3 {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task-card:active {
+    transform: scale(0.98);
+}
+
+.task-info h2 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.task-date {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.play-audio {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play-audio:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    body {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Center the modal vertically */
+#taskDetailsModal .modal-dialog {
+    margin-top: 200px; /* Adjust this value as needed */
+}
+
+.task-card.playing {
+    border: 2px solid blue;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px blue; }
+    50% { box-shadow: 0 0 20px blue; }
+    100% { box-shadow: 0 0 10px blue; }
+}
